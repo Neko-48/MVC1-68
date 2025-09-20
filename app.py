@@ -39,7 +39,6 @@ def login():
                 return redirect(url_for("admin.students_list"))
 
         elif role == "student":
-        # ใช้ student_id แทน student_code ให้ตรงกับ seed_db.py
             student = Student.query.filter_by(student_id=username).first()
             if student and password == "studentpass":  # mock password ทุกคนใช้ studentpass
                 session["role"] = "student"
