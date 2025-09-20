@@ -22,7 +22,7 @@ def profile():
 
 # หน้าลงทะเบียนเรียน
 @student_bp.route("/register", methods=["GET", "POST"], endpoint="register")
-def register_subjects():
+def register():
     if session.get("role") != "student":
         return redirect(url_for("login"))
 
