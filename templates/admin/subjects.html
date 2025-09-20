@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><title>Subjects</title></head>
+<body>
+  <h1>Admin Panel</h1>
+  <!-- Navigation -->
+  <nav>
+    <a href="{{ url_for('admin.students_list') }}">Students</a> |
+    <a href="{{ url_for('admin.subjects_list') }}">Subjects</a> |
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </nav>
+  <hr>
+  
+  <h2>Subjects</h2>
+  <table border="1">
+    <tr><th>Code</th><th>Name</th><th>Action</th></tr>
+    {% for subj in subjects %}
+    <tr>
+      <td>{{ subj.subject_code }}</td>
+      <td>{{ subj.name }}</td>
+      <td><a href="{{ url_for('admin.grading', subject_id=subj.id) }}">Grade</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

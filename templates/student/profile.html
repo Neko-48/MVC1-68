@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>My Profile</title></head>
+<body>
+  <h2>Welcome, {{ student.name }}</h2>
+  <p>ID: {{ student.student_id }}</p>
+  <p>School: {{ student.school }}</p>
+  <p>Age: {{ student.age }}</p>
+
+  <h3>Registered Subjects</h3>
+  <table border="1">
+    <tr><th>Subject</th><th>Grade</th></tr>
+    {% for r in registered %}
+      <tr>
+        <td>{{ r.subject.name }}</td>
+        <td>{{ r.grade or '-' }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <a href="{{ url_for('student.register') }}">Register More Subjects</a> |
+  <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

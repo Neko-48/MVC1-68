@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Student Detail</title></head>
+<body>
+  <h2>Profile: {{ student.first_name }} {{ student.last_name }}</h2>
+  <p>ID: {{ student.student_id }}</p>
+  <p>School: {{ student.school }}</p>
+  <p>Email: {{ student.email }}</p>
+
+  <h3>Registered Subjects</h3>
+  <table border="1">
+    <tr><th>Subject</th><th>Grade</th></tr>
+    {% for reg in student.registered_subjects %}
+      <tr>
+        <td>{{ reg.subject.name }}</td>
+        <td>{{ reg.grade or '-' }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <a href="{{ url_for('admin.students_list') }}">Back to Students</a>
+</body>
+</html>

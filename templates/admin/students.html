@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head><title>All Students</title></head>
+<body>
+  <h1>Admin Panel</h1>
+  <!-- Navigation -->
+  <nav>
+    <a href="{{ url_for('admin.students_list') }}">Students</a> |
+    <a href="{{ url_for('admin.subjects_list') }}">Subjects</a> |
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </nav>
+  <hr>
+
+  <h2>All Students</h2>
+  <form method="get">
+    Search: <input type="text" name="q" value="{{ q }}">
+    Sort: 
+    <select name="sort">
+      <option value="name" {% if sort=="name" %}selected{% endif %}>Name</option>
+      <option value="age" {% if sort=="age" %}selected{% endif %}>Age</option>
+    </select>
+    <button type="submit">Apply</button>
+  </form>
+
+  <table border="1">
+    <tr><th>ID</th><th>Name</th><th>School</th><th>Action</th></tr>
+    {% for s in students %}
+    <tr>
+      <td>{{ s.student_id }}</td>
+      <td>{{ s.first_name }} {{ s.last_name }}</td>
+      <td>{{ s.school }}</td>
+      <td><a href="{{ url_for('admin.student_detail', student_id=s.id) }}">View Profile</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

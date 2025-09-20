@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Register Subjects</title></head>
+<body>
+  <h2>Register New Subjects</h2>
+  <form method="post">
+    <select name="subject_id">
+      {% for subj in available %}
+        <option value="{{ subj.id }}">{{ subj.subject_id }} - {{ subj.name }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit">Register</button>
+  </form>
+
+  <a href="{{ url_for('student.profile') }}">Back to Profile</a>
+</body>
+</html>
